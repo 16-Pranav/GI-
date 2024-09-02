@@ -1,11 +1,16 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 
 const Login = () => {
+  const [phone, setPhone] = useState("");
+
+
   return (
     <>
-    
-
+      
     <div className="h-screen flex justify-center items-center ">
       <div className="h-[500px] w-[500px] px-10 bg-white flex flex-col justify-center border border-teal-600 shadow-lg">
         <h1 className="text-3xl ">Welcome back!!</h1>

@@ -19,6 +19,8 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import { CartProvider } from './Components/CartContext';
 import AboutProduct from './pages/AboutProduct';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // eslint-disable-next-line
 const Layout = () => {
@@ -27,7 +29,8 @@ const Layout = () => {
       <Navbar />
       <div className='max-w-7xl mx-auto pt-20 px-6'>
           <main>
-            <Outlet />
+          <Outlet />
+          <ToastContainer/>
           </main>
       </div>
       <Footer />
