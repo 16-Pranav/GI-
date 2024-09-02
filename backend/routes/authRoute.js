@@ -15,7 +15,11 @@ router.post("/register", registerController);
 
 // LOGIN || METHOD POST
 router.post("/login", LoginUser);
-export default router;
+
 
 // test route
 router.get("/test", requireSignIn, isAdmin, testController);
+
+
+
+export default router;

@@ -76,38 +76,35 @@ export const LoginUser = async (req, res) => {
     }
 
     // Check user:
-    const existingUser = await userModel.findOne({ phone });
+    const existingUser = await userModel.findOne({ phone: phone });
     if (!existingUser) {
       return res.status(400).send({
         success: false,
         message: "User not found",
       });
     }
-    //   Match Phone Numbers from entered and the ine in database
-    const match = await comparePhone(phone, existingUser.phone);
-    if (!match) {
-      return res.status(400).send({
-        success: false,
-        message: "Invalid Phone Number",
-      });
-    }
-      // Generate Token using JWT
-      const token = await JWT.sign({ _id: existingUser._id }, process.env.JWT_TOKEN, {
+
+    // Generate Token using JWT
+    const token = await JWT.sign(
+      { _id: existingUser._id },
+      process.env.JWT_TOKEN,
+      {
         expiresIn: "1d",
-      });
-    
-      //   Return token to the user
-      res.status(200).send({
-        success: true,
-        message: "Login Successful",
-        user: {
-          name: existingUser.name,
-          phone: existingUser.phone,
-          role: existingUser.role,
-        },
-        token,
-      });
-    
+      }
+    );
+
+    //   Return token to the user
+    res.status(200).send({
+      success: true,
+      message: "Login Successful",
+      user: {
+        name: existingUser.name,
+        phone: existingUser.phone,
+        role: existingUser.role,
+      },
+      token,
+    });
+
     // Display ERROR IF FAILED PROCESS
   } catch (error) {
     return res.status(500).send({
