@@ -19,8 +19,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import { CartProvider } from './Components/CartContext';
 import AboutProduct from './pages/AboutProduct';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "react-hot-toast";
 
 // eslint-disable-next-line
 const Layout = () => {
@@ -30,7 +29,7 @@ const Layout = () => {
       <div className='max-w-7xl mx-auto pt-20 px-6'>
           <main>
           <Outlet />
-          <ToastContainer/>
+          <Toaster/>
           </main>
       </div>
       <Footer />
@@ -60,9 +59,9 @@ const router = createBrowserRouter([
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  // </React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function

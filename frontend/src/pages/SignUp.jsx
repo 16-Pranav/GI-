@@ -1,26 +1,49 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+// import toast from 'react-toastify'
+import axios from "axios";
 
 const SignUp = () => {
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      toast.success("Registered Successfully")
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/auth/register",
+        {
+          name,
+          phone,
+        }
+      );
+      if (res.data.success) {
+        toast.success(res.data.message);
+        navigate("/login");
+      } else {
+        toast.error(res.data.message);
+      }
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong")
-      
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        // Generic error handling for unexpected issues
+        console.error(error);
+        toast.error("Something went wrong");
+      }
+      // console.error(error);
+      // toast.error("Something went wrong");
     }
-  }
+  };
 
   return (
     <>
