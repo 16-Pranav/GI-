@@ -16,9 +16,11 @@ const Navbar = () => {
       <div className="container px-9 mx-auto relative">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="bg-gradient-to-r from-green-800 to-blue-600 text-transparent bg-clip-text text-4xl font-bold cursor-pointer ">
-              <Link to={"/"}>GI PROJECT</Link>
-            </h1>
+            <Link to={"/"}>
+              <h1 className="bg-gradient-to-r from-green-800 to-blue-600 text-transparent bg-clip-text text-4xl font-bold cursor-pointer ">
+                GI PROJECT
+              </h1>
+            </Link>
           </div>
           <div className=" hidden lg:flex items-center w-full max-w-sm border rounded-full shadow-sm h-10">
             <input

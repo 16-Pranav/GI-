@@ -21,6 +21,7 @@ import { CartProvider } from './Components/CartContext';
 import AboutProduct from './pages/AboutProduct';
 import { Toaster } from "react-hot-toast";
 
+
 // eslint-disable-next-line
 const Layout = () => {
   return (
@@ -41,9 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <CartProvider>
-        <Layout />
-      </CartProvider>
+        <CartProvider>
+          <Layout />
+        </CartProvider>
+
     ),
     children: [
       { path: "/", element: <Home /> },
@@ -53,15 +55,17 @@ const router = createBrowserRouter([
       { path: "Login", element: <Login /> },
       { path: "Signup", element: <SignUp /> },
       { path: "About", element: <About /> },
-      { path: "Contact", element: <ContactUs /> }
-    ]
-  }
+      { path: "Contact", element: <ContactUs /> },
+    ],
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
+
     <RouterProvider router={router} />
-  // </React.StrictMode> 
+  
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
